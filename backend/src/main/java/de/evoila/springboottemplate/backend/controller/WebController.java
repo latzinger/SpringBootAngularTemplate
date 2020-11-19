@@ -2,33 +2,26 @@ package de.evoila.springboottemplate.backend.controller;
 
 import org.keycloak.KeycloakPrincipal;
 import org.keycloak.KeycloakSecurityContext;
+import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.security.Principal;
 
 @Controller
 @RequestMapping("/bookstore")
 public class WebController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/login")
-    public ModelAndView login(Principal principal) {
+    public ModelAndView login(KeycloakAuthenticationToken keycloakAuthenticationToken) {
 
         ModelAndView modelAndView = new ModelAndView("index");
 
-        KeycloakPrincipal<KeycloakSecurityContext> keycloakPrincipal = (KeycloakPrincipal<KeycloakSecurityContext>) principal;
+        KeycloakSecurityContext context = keycloakAuthenticationToken.getAccount().getKeycloakSecurityContext();
 
-        KeycloakSecurityContext context = keycloakPrincipal.getKeycloakSecurityContext();
-
-        String realm = context.getRealm();
-        String token = context.getTokenString();
-        String idToken = context.getIdTokenString();
-        String accessToken = context.getToken().toString();
-
-        modelAndView.addObject("realm", realm);
-        modelAndView.addObject("token", token);
+        modelAndView.addObject("realm", context.getRealm());
+        modelAndView.addObject("token", "Bearer " + context.getTokenString());
 
         return modelAndView;
     }
