@@ -1,14 +1,12 @@
 <div class="clr-row">
-    <div class="clr-col-sm-12 clr-col-md-12">
-        <p>Welcome! Angular App is running.</p>
+    <div class="clr-col-sm-12 clr-col-md-8">
+      <p id="p"> Welcome! Angular App is running. </p>
     </div>
-    <div class="clr-col-sm-12 clr-col-md-12">
-        <p></p>
-    </div>
-    <div class="clr-col-sm-12 clr-col-md-12">
+    <div class="clr-col-sm-12 clr-col-md-4">
       <button class="btn" (click)="showExampleNotification()">Notification</button>
       <button class="btn" (click)="showExampleModal()">Modal</button>
     </div>
+    <p></p>
 </div>
 
 <clr-modal [(clrModalOpen)]="openModal" [clrModalSize]="'md'">
