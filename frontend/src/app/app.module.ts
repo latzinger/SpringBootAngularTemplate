@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClarityModule } from '@clr/angular';
@@ -9,6 +10,7 @@ import { NotificationService } from './services/notification.service';
 import { NotificationBannerComponent } from './components/notification-banner/notification-banner.component';
 import { ExampleComponent } from './components/example/example.component';
 import { DbExampleInteractionComponent } from './components/db-example-interaction/db-example-interaction.component';
+import { BookService } from './services/book.service';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,11 @@ import { DbExampleInteractionComponent } from './components/db-example-interacti
     BrowserModule,
     AppRoutingModule,
     ClarityModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [NotificationService],
+  providers: [NotificationService, BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
