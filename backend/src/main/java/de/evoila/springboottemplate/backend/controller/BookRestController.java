@@ -5,10 +5,13 @@ import de.evoila.springboottemplate.backend.repositories.BookRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping(value = "/secure")
+@RequestMapping(value = "/secure/books")
 public class BookRestController {
 
     private final BookRepository bookRepository;
@@ -19,33 +22,35 @@ public class BookRestController {
         this.bookRepository = bookRepository;
     }
 
-    @DeleteMapping(value = "/books/{id}")
+    @DeleteMapping(value = "/{id}")
     public void deleteById(@PathVariable Long id) {
-        log.info("Delete Book with Id: " + id);
+        log.info("[DELETE] secure/books/" + id);
         bookRepository.deleteById(id);
     }
 
-    @GetMapping(value = "/books/{id}")
-    public Book get(@PathVariable Long id) {
-        log.info("Get Book with Id: " + id);
-        return bookRepository.getOne(id);
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Book> get(@PathVariable Long id) {
+        log.info("[GET] secure/books/" + id);
+        Book book = bookRepository.getOne(id);
+        return ResponseEntity.ok(book);
     }
 
-    @GetMapping(value = "/books")
-    public Iterable<Book> books() {
-        log.info("Get all books");
-        return bookRepository.findAll();
+    @GetMapping(value = "")
+    public ResponseEntity<List<Book>> books() {
+        log.info("[GET] secure/books/");
+        List<Book> books = bookRepository.findAll();
+        return ResponseEntity.ok(books);
     }
 
-    @PutMapping(value = "/books")
-    public Book put(@RequestBody Book book) {
-        log.info("Saving " + book);
-        return bookRepository.save(book);
+    @PutMapping(value = "")
+    public ResponseEntity<Book> put(@RequestBody Book book) {
+        log.info("[PUT] secure/books/");
+        return ResponseEntity.ok(bookRepository.save(book));
     }
 
-    @PostMapping(value = "/books")
-    public Book post(@RequestBody Book book) {
-        log.info("Updating " + book);
-        return bookRepository.save(book);
+    @PostMapping(value = "")
+    public ResponseEntity<Book> post(@RequestBody Book book) {
+        log.info("[POST] secure/books/");
+        return ResponseEntity.ok(bookRepository.save(book));
     }
 }
