@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/secure/books")
@@ -22,35 +22,39 @@ public class BookRestController {
         this.bookRepository = bookRepository;
     }
 
-    @DeleteMapping(value = "/{id}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public void deleteById(@PathVariable Long id) {
         log.info("[DELETE] secure/books/" + id);
         bookRepository.deleteById(id);
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<Book> get(@PathVariable Long id) {
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public ResponseEntity<Book> getById(@PathVariable Long id) {
         log.info("[GET] secure/books/" + id);
-        Book book = bookRepository.getOne(id);
-        return ResponseEntity.ok(book);
+        Optional<Book> book = bookRepository.findById(id);
+        return ResponseEntity.ok(book.get());
     }
 
-    @GetMapping(value = "")
-    public ResponseEntity<List<Book>> books() {
+    @RequestMapping(method = RequestMethod.GET, value = "")
+    public ResponseEntity<Iterable<Book>> getAll() {
         log.info("[GET] secure/books/");
-        List<Book> books = bookRepository.findAll();
+        Iterable<Book> books = bookRepository.findAll();
         return ResponseEntity.ok(books);
     }
 
-    @PutMapping(value = "")
+    @RequestMapping(method = RequestMethod.POST, value = "")
+    public ResponseEntity<Book> post(@RequestBody Book book) {
+        log.info("[POST] secure/books/");
+        return ResponseEntity.ok(bookRepository.save(book));
+    }
+
+    /* Equivalent PUT Request
+    @RequestMapping(method = RequestMethod.PUT, value = "")
     public ResponseEntity<Book> put(@RequestBody Book book) {
         log.info("[PUT] secure/books/");
         return ResponseEntity.ok(bookRepository.save(book));
     }
 
-    @PostMapping(value = "")
-    public ResponseEntity<Book> post(@RequestBody Book book) {
-        log.info("[POST] secure/books/");
-        return ResponseEntity.ok(bookRepository.save(book));
-    }
+    */
+
 }

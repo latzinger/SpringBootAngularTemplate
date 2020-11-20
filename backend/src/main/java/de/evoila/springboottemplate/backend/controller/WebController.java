@@ -19,7 +19,6 @@ public class WebController {
         ModelAndView modelAndView = new ModelAndView("index");
 
         KeycloakSecurityContext context = keycloakAuthenticationToken.getAccount().getKeycloakSecurityContext();
-
         modelAndView.addObject("realm", context.getRealm());
         modelAndView.addObject("token", "Bearer " + context.getTokenString());
 
