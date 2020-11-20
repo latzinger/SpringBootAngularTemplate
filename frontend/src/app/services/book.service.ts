@@ -17,7 +17,7 @@ export class BookService {
   private httpOptions = {
     headers: new HttpHeaders({
       Authorization: this.authToken
-    })
+    }).append('Content-Type', 'application/json')
   };
 
 
