@@ -24,33 +24,33 @@ public class BookRestController {
 
     @DeleteMapping(value = "/{id}")
     public void deleteById(@PathVariable Long id) {
-        log.info("Delete Book with Id: " + id);
+        log.info("[DELETE] secure/books/" + id);
         bookRepository.deleteById(id);
     }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Book> get(@PathVariable Long id) {
-        log.info("Get Book with Id: " + id);
+        log.info("[GET] secure/books/" + id);
         Book book = bookRepository.getOne(id);
         return ResponseEntity.ok(book);
     }
 
-    @GetMapping(value = "/books")
+    @GetMapping(value = "")
     public ResponseEntity<List<Book>> books() {
-        log.info("Get all books");
+        log.info("[GET] secure/books/");
         List<Book> books = bookRepository.findAll();
         return ResponseEntity.ok(books);
     }
 
     @PutMapping(value = "")
     public ResponseEntity<Book> put(@RequestBody Book book) {
-        log.info("Saving " + book);
+        log.info("[PUT] secure/books/");
         return ResponseEntity.ok(bookRepository.save(book));
     }
 
     @PostMapping(value = "")
     public ResponseEntity<Book> post(@RequestBody Book book) {
-        log.info("Updating " + book);
+        log.info("[POST] secure/books/");
         return ResponseEntity.ok(bookRepository.save(book));
     }
 }
