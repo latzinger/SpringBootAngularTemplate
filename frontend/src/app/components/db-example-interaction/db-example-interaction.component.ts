@@ -28,15 +28,15 @@ export class DbExampleInteractionComponent implements OnInit {
     this.books = [];
 
     // GET LOCAL
-    setTimeout(() => {
+    /*setTimeout(() => {
       this.books = this.generateLocalBooks();
     }, 25);
-
-    /* GET FROM POSTGRES
+*/
+     //GET FROM POSTGRES
     this.library.getAllBooks().subscribe(k => {
       this.books = k;
     });
-    */
+    
   }
 
   deleteBook(id: string){
