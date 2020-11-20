@@ -45,7 +45,7 @@ The backend communicates with Keycloak for authentication and uses a postgres da
 
 Distributed under the Apache License. See `LICENSE` for more information.
 
-[contributors-shield]: https://img.shields.io/github/forks/latzinger/SpringBootAngularTemplate?style=flat-square
+[contributors-shield]: https://img.shields.io/github/contributors/latzinger/SpringBootAngularTemplate?style=flat-square
 [contributors-url]: https://github.com/latzinger/SpringBootAngularTemplate/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/latzinger/SpringBootAngularTemplate?style=flat-square
 [forks-url]: https://github.com/latzinger/SpringBootAngularTemplate/network/members
