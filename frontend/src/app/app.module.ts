@@ -8,12 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotificationService } from './services/notification.service';
 import { NotificationBannerComponent } from './components/notification-banner/notification-banner.component';
 import { ExampleComponent } from './components/example/example.component';
+import { DbExampleInteractionComponent } from './components/db-example-interaction/db-example-interaction.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotificationBannerComponent,
-    ExampleComponent
+    ExampleComponent,
+    DbExampleInteractionComponent
   ],
   imports: [
     BrowserModule,
