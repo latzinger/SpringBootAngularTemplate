@@ -11,7 +11,7 @@ public class Book {
     private Long id;
     private String name;
     private String isbn;
-    private String pages;
+    private int pages;
     private String author;
 
     public Long getId() {
@@ -38,11 +38,11 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public String getPages() {
+    public int getPages() {
         return pages;
     }
 
-    public void setPages(String pages) {
+    public void setPages(int pages) {
         this.pages = pages;
     }
 

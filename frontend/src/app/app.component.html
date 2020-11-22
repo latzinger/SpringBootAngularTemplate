@@ -2,7 +2,7 @@
 <div class="main-container">
   <header class="header-6">
     <div class="branding">
-      <span class="title">Starter Project</span>
+      <span class="title">PROJ Template</span>
     </div>
     <div class="header-nav">
         <a href="javascript://" class="active nav-link nav-text">Link 1</a>
@@ -20,16 +20,16 @@
       <div class="content-area">
         <db-notification-banner *ngIf="shouldDisplayNotification" [notification]="notification">
         </db-notification-banner>
-        
-        <h4> Evoila PROJ Angular Template </h4>
 
         <!-- 
           app-example is a simple hello world component to demonstrate notification.service
           and notification-banner.component in action 
         -->
-        
         <app-example></app-example>
-                
+          
+        <!-- example component to demonstrate database interaction -->
+        <app-db-example-interaction id="db-example"></app-db-example-interaction>
+
         
       </div>
   </div>
