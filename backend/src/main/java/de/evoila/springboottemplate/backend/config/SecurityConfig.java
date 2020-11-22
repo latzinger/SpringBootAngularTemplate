@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.session.RegisterSessionAu
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 
 @KeycloakConfiguration
-class SecurityConfiguration extends KeycloakWebSecurityConfigurerAdapter {
+class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) {
@@ -45,7 +45,10 @@ class SecurityConfiguration extends KeycloakWebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         super.configure(httpSecurity);
         httpSecurity.authorizeRequests()
-                .antMatchers("/secure/**", "/bookstore/login").hasRole("user")
-                .anyRequest().permitAll();
+                .antMatchers("/secure/**", "/bookstore/dashboard").hasRole("user")
+                .anyRequest().permitAll()
+                .and()
+                .csrf().disable()
+                .cors();
     }
 }

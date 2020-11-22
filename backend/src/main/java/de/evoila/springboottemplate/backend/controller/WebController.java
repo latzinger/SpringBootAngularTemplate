@@ -13,13 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/bookstore")
 public class WebController {
 
-    @RequestMapping(method = RequestMethod.GET, value = "/login")
+    @RequestMapping(method = RequestMethod.GET, value = "/dashboard")
     public ModelAndView login(KeycloakAuthenticationToken keycloakAuthenticationToken) {
 
         ModelAndView modelAndView = new ModelAndView("index");
 
         KeycloakSecurityContext context = keycloakAuthenticationToken.getAccount().getKeycloakSecurityContext();
-
         modelAndView.addObject("realm", context.getRealm());
         modelAndView.addObject("token", "Bearer " + context.getTokenString());
 
