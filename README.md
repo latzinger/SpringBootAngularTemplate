@@ -28,6 +28,14 @@
 In this project SpringBoot was used as basis for the backend. For the frontend Angular was chosen.
 The backend communicates with Keycloak for authentication and uses a postgres database for internal resource management.
 
+## Preview
+![Login-Mask](https://github.com/latzinger/SpringBootAngularTemplate/blob/main/images/Bildschirmfoto%202020-11-20%20um%2018.19.33.png)
+
+![Dashbboard](https://github.com/latzinger/SpringBootAngularTemplate/blob/main/images/Bildschirmfoto%202020-11-22%20um%2013.58.39.png)
+
+![Book-List](https://github.com/latzinger/SpringBootAngularTemplate/blob/main/images/Bildschirmfoto%202020-11-22%20um%2013.59.26.png)
+
+
 ### Built With
 * [SpringBoot](https://spring.io/projects/spring-boot)
 * [Angular](https://angular.io)
