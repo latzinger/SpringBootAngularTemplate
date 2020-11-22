@@ -27,11 +27,12 @@ export class DbExampleInteractionComponent implements OnInit {
   loadBooks(){
     this.books = [];
 
-    // GET LOCAL
-    /*setTimeout(() => {
+    /*// GET LOCAL
+    setTimeout(() => {
       this.books = this.generateLocalBooks();
     }, 25);
-*/
+    */
+
      //GET FROM POSTGRES
     this.library.getAllBooks().subscribe(k => {
       this.books = k;
@@ -67,6 +68,12 @@ export class DbExampleInteractionComponent implements OnInit {
 
 
 
+
+
+
+
+  // test code to create books locally
+
   generateLocalBooks(): Array<Book>{
 
     var localBooks = Array<Book>();
@@ -98,7 +105,7 @@ export class DbExampleInteractionComponent implements OnInit {
    return result;
 }
 
- 
+ // test code end
 
 
 
